@@ -1,0 +1,51 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+\title{Definitions}
+\author{Afroz Mohiuddin}
+
+\newcommand{\afrodefine}[4]{
+\subsection{\textcolor{red}{#1}}
+#2
+$$ \ensuremath{#3} $$
+#4
+}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Information Theory}
+
+\afrodefine{Entropy}{Lack of information about a random variable.}{H(Y) = -\sum_{y}p(y)\ln{p(y)}}{}
+
+\afrodefine{Joint Entropy}{ !!!! Interpretation !!!! }{H(X, Y) = -\sum_{x, y}p(x, y)\ln{p(x, y)}}{}
+
+\afrodefine{Mutual Information}{Measure of information overlap between two random variables.}{I(X; Y) = \sum_{x, y} p(x, y)\ln{\frac{p(x, y)}{p(x)p(y)}}}{The information overlap between $X$ and $Y$ is $0$ when the two variables are independent. When $X$ determines $Y$, $I(X; Y) = H(Y)$.
+
+$I(X; Y)$ reaches its maximum value value, when $X$ and $Y$ are perfectly correlated, i.e. they determine each other.}
+
+\afrodefine{Pointwise Mutual Infomation (PMI)}{Measure of how much the actual probability of a particular co-occurrence of events $p(x, y)$ differs from what we would expect it to be on the basis of the probabilities of individual events and the assumption of independence, $p(x)p(y)$}{i(x, y) = \ln{\frac{p(x, y)}{p(x)p(y)}}}{Even though PMI maybe positive or negative, its expected output over all joint events, i.e. MI, is positive.}
+
+\subsection{Identities}
+Information overlap is sum of entropies as well as expected value of PMI. 
+\begin{align*}
+I(X; Y) & = H(X) + H(Y) - H(X, Y) \\
+I(X; Y) & = E_{p(X, Y)}[i(X, Y)] \\
+& = \sum_{x, y}p(x, y)i(x, y)
+\end{align*}
+
+
+\end{document}
