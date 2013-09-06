@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{color}
+\usepackage{graphicx}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -10,6 +11,14 @@
     linkcolor=blue,
     urlcolor=black
 }
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}%
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\distras}[1]{%
+  \savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+  \savebox{\mysim}{\hbox{$\sim$}}%
+  \mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\newcommand{\afrodef}{\buildrel\triangle\over =}
 
 \title{Definitions}
 \author{Afroz Mohiuddin}
@@ -26,6 +35,12 @@ $$ \ensuremath{#3} $$
 \maketitle
 
 \tableofcontents
+
+\section{Distributions}
+
+\afrodefine{Binomial Distribution}{Suppose we toss a coin $n$ times, let $X$ be the number of heads, if the probability of heads is $\theta$, then we say that $X$ has a binomial distribution, $X \sim Bin(n, \theta)$}{Bin(k|n, \theta) \afrodef {n \choose k}{\theta}^k(1 - \theta)^{n - k}}{$$\text{mean} = n\theta, \text{var} = n\theta(1 - \theta)$$}
+
+
 
 \section{Information Theory}
 
